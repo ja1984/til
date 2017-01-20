@@ -10,9 +10,9 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>
@@ -27,5 +27,6 @@ header {
 	
 	text-align: left;
 	box-sizing: border-box;
+	z-index: 10;
 }
 </style>

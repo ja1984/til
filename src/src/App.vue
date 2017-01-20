@@ -1,141 +1,63 @@
 <template>
   <div id="app">
-	<HeaderBar></HeaderBar>
-<div class="card-container">
-	<div class="card">
-		<div class="card-content">
-		<div class="card-title">
-			<strong>
+    <HeaderBar></HeaderBar>
+    <div class="card-container">
+      <div class="card" v-for="link in links">
+        <div class="card-content">
+          <div class="card-title">
+            <strong>
 				<a href="#">Using Fetch</a>
-			</strong>
-			<img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
-		</div>
-		<div class="card-description">
-			This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP. 
-		</div>
-		<div class="card-footer">
-			Mozilla Developer Network
-		</div>
-	</div>
-	</div>
-	<div class="card">
-		<div class="card-content">
-		<div class="card-title">
-			<strong>
-				<a href="#">Using Fetch</a>
-			</strong>
-			<img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
-		</div>
-		<div class="card-description">
-			This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP. 
-		</div>
-		<div class="card-footer">
-			Mozilla Developer Network
-		</div>
-	</div>
-	</div>
-	<div class="card">
-		<div class="card-content">
-		<div class="card-title">
-			<strong>
-				<a href="#">Using Fetch</a>
-			</strong>
-			<img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
-		</div>
-		<div class="card-description">
-			This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP. 
-		</div>
-		<div class="card-footer">
-			Mozilla Developer Network
-		</div>
-	</div>
-	</div>
-	<div class="card">
-		<div class="card-content">
-		<div class="card-title">
-			<strong>
-				<a href="#">Using Fetch</a>
-			</strong>
-			<img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
-		</div>
-		<div class="card-description">
-			This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP. 
-		</div>
-		<div class="card-footer">
-			Mozilla Developer Network
-		</div>
-	</div>
-	</div>
-	<div class="card">
-		<div class="card-content">
-		<div class="card-title">
-			<strong>
-				<a href="#">Using Fetch</a>
-			</strong>
-			<img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
-		</div>
-		<div class="card-description">
-			This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP. 
-		</div>
-		<div class="card-footer">
-			Mozilla Developer Network
-		</div>
-	</div>
-	</div>
-	<div class="card">
-		<div class="card-content">
-		<div class="card-title">
-			<strong>
-				<a href="#">Using Fetch</a>
-			</strong>
-			<img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
-		</div>
-		<div class="card-description">
-			This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP. 
-		</div>
-		<div class="card-footer">
-			Mozilla Developer Network
-		</div>
-	</div>
-	</div>
-</div>
-
-	
-
-
+			  </strong>
+            <img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
+          </div>
+          <div class="card-description">
+            This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be
+            easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define
+            other HTTP-related concepts such as CORS and extensions to HTTP.
+          </div>
+          <div class="card-footer">
+            Mozilla Developer Network
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HeaderBar from './components/Header'
+  import HeaderBar from './components/Header';
 
-export default {
-  name: 'app',
-  components: {
-    HeaderBar
-  },
-  created: function () {
-    window.addEventListener('paste', function (e) {
-      console.log(e.clipboardData.getData('text/plain'))
-    })
-  }
-}
+  export default {
+    name: 'app',
+    components: {
+      HeaderBar
+    },
+    created: function () {
+      var store = this.$store;
+      window.addEventListener('paste', function (e) {
+        store.dispatch('addLink', e.clipboardData.getData('text/plain'));
+      });
+    },
+    data () {
+      return {
+        links: this.$store.state.links
+      };
+    }
+  };
 </script>
 
 <style>
 body{
-	background: #fff;
 	font-family: 'Open Sans', sans-serif;
 	font-size: .9rem;
 	background: #f9f9f9;
-
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding-top: 4rem; 
 }
 
 a{
