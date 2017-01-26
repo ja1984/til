@@ -6,17 +6,17 @@
         <div class="card-content">
           <div class="card-title">
             <strong>
-				<a href="#">Using Fetch</a>
+				<a href="javascript:void(0);" :href="link.url.href" target="_blank">{{link.title}}</a>
 			  </strong>
-            <img src="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png" />
+            <img src="" :src="link.image"  />
           </div>
           <div class="card-description">
-            This kind of functionality was previously achieved using XMLHttpRequest. Fetch provides a better alternative that can be
-            easily used by other technologies such as Service Workers. Fetch also provides a single logical place to define
-            other HTTP-related concepts such as CORS and extensions to HTTP.
+            {{link.description}}
           </div>
           <div class="card-footer">
-            Mozilla Developer Network
+			<img src="" :src="link.favicon"/> 
+
+			<span>{{link.url.protocol}}//</span><span class="host">{{link.url.hostname}}</span><span>{{link.url.path}}</span>
           </div>
         </div>
       </div>
@@ -74,14 +74,14 @@ a:hover{
 .card-container{
 	display: flex;
 	width: 100%;
-	max-width: 1200px;
+	max-width:980px;
 	margin: 0 auto;
 	flex-flow: row wrap;
 }
 
 .card{
 	padding: .5rem;
-	width: 25%;
+	width: 100%;
 	box-sizing: border-box;
 }
 
@@ -125,4 +125,13 @@ a:hover{
 	color: #bbb;
 }
 
+.card-footer img{
+	vertical-align: sub;
+	margin-right: .4rem;
+}
+
+.card-footer .host{
+
+	color: #333;
+}
 </style>

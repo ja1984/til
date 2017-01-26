@@ -1,9 +1,7 @@
-var OpenGraph = require('facebook-open-graph')
+import Vue from 'vue';
 
 export const getOpenGraphData = (linkUrl) => {
-  return new Promise(function (resolve) {
-    og(linkUrl, function (err, meta) {
-      resolve(meta);
-    });
+  return Vue.http.post('/api/get', {
+    url: linkUrl
   });
 };

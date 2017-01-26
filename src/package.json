@@ -10,8 +10,13 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "body-parser": "^1.16.0",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
     "open-graph": "^0.2.2",
+    "request": "^2.79.0",
     "vue": "^2.1.0",
+    "vue-resource": "^1.0.3",
     "vuex": "^2.1.1"
   },
   "devDependencies": {
